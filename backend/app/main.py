@@ -1,8 +1,9 @@
 from fastapi import FastAPI
+from app.core.config import settings
 
 app = FastAPI(
-    title="LogSense API",
-    version="0.1.0"
+    title=settings.app_name,
+    version=settings.app_version,
 )
 
 
@@ -10,5 +11,6 @@ app = FastAPI(
 def health():
     return {
         "status": "ok",
-        "service": "logsense-backend"
+        "service": "logsense-backend",
+        "environment": settings.environment,
     }
